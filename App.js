@@ -33,7 +33,7 @@ class App extends Component {
             <View style={ styles.container }>
                 <Header 
                     value={ this.state.value }
-                    onAddItem={ this.handleAddItem}
+                    onAddItem={ this.handleAddItem }
                     onChange={ (value) => this.setState({ value }) }
                 />
                 <View style={ styles.content }>
