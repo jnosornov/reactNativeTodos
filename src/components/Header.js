@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 
 class Header extends Component {
     render() {
+        console.log('Header component', this.props);
+        console.log(`value: ${ typeof(this.props.value) }`);
         return (
             <View style={ styles.header }>
             <TouchableOpacity onPress={ this.props.onToggleAllComplete }>
@@ -10,7 +12,7 @@ class Header extends Component {
             </TouchableOpacity>
                 <TextInput
                     value={ this.props.value }
-                    onChange={ this.props.onChange }
+                    onChangeText={ this.props.onChange }
                     onSubmitEditing = { this.props.onAddItem }
                     placeholder="What needs to be done?"
                     blurOnSubmit={ false }
