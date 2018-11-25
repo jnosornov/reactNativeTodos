@@ -3,8 +3,6 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-nativ
 
 class Header extends Component {
     render() {
-        console.log('Header component', this.props);
-        console.log(`value: ${ typeof(this.props.value) }`);
         return (
             <View style={ styles.header }>
             <TouchableOpacity onPress={ this.props.onToggleAllComplete }>
