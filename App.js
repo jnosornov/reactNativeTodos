@@ -54,6 +54,7 @@ class App extends Component {
                 />
                 <View style={ styles.content }>
                     <FlatList
+                        keyExtractor={ item => item.key.toString() }
                         data={ this.state.items }   
                         renderItem={ ({ item }) => <Text>{ item.text }</Text> }
                     >
