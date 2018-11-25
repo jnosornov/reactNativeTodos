@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Keyboard } from 'react-native';
 
 import Header from './src/components/Header';
 import Footer from './src/components/Footer';
@@ -42,6 +42,7 @@ class App extends Component {
             value: ""
         });
     }
+
     render() {
         return (
             <View style={ styles.container }>
@@ -52,7 +53,11 @@ class App extends Component {
                     onToggleAllComplete={ this.handleToggleAllComplete }
                 />
                 <View style={ styles.content }>
-
+                    <FlatList
+                        data={ this.state.items }   
+                        renderItem={ ({ item }) => <Text>{ item.text }</Text> }
+                    >
+                    </FlatList>
                 </View>
                 <Footer />
             </View>
