@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList, Keyboard } from 'react-native';
 
 import Header from './src/components/Header';
 import Footer from './src/components/Footer';
+import Row from './src/components/Row';
 
 class App extends Component {
     constructor(props) {
@@ -59,9 +60,7 @@ class App extends Component {
                         data={ this.state.items }   
                         renderItem={ ({ item }) => {
                             return (
-                                <View style={ styles.textContainer }>
-                                    <Text style={ styles.text }>{ item.text }</Text> 
-                                </View>
+                                <Row item={ item }/>
                             );
                         }}
                         ItemSeparatorComponent={ () => <View style={ styles.separator } /> }
@@ -87,16 +86,6 @@ const styles = StyleSheet.create({
     separator: {
         height: 2,
         backgroundColor: "#f5f5f5"
-    },
-    textContainer: {
-        padding: 10,
-        flexDirection: "row",
-        alignItems: "flex-start",
-        justifyContent: "space-between"
-    },
-    text: {
-        fontSize: 16,
-        color: "#4d4d4d"
     }
 });
 
