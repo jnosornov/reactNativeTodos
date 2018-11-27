@@ -13,8 +13,21 @@ class App extends Component {
             value: "",
             items: []
         }
+        this.handleToggleComplete = this.handleToggleComplete.bind(this);
         this.handleAddItem = this.handleAddItem.bind(this);
         this.handleToggleAllComplete = this.handleToggleAllComplete.bind(this);
+    }
+    handleToggleComplete(key, complete) {
+        const newItems = this.state.items.map(( item ) => {
+            if( item.key !== key ) return item;
+            return {
+                ...item,
+                complete
+            }
+        });
+        this.setState({
+            items: newItems
+        });
     }
     handleToggleAllComplete() {
         const complete = !this.state.allComplete;
@@ -43,7 +56,6 @@ class App extends Component {
             value: ""
         });
     }
-
     render() {
         return (
             <View style={ styles.container }>
@@ -60,7 +72,10 @@ class App extends Component {
                         data={ this.state.items }   
                         renderItem={ ({ item }) => {
                             return (
-                                <Row item={ item }/>
+                                <Row
+                                    item={ item }
+                                    onComplete={ (complete) => this.handleToggleComplete( item.key , complete ) }
+                                />
                             );
                         }}
                         ItemSeparatorComponent={ () => <View style={ styles.separator } /> }
