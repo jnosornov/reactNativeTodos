@@ -14,6 +14,7 @@ class App extends Component {
             items: []
         }
         this.handleToggleComplete = this.handleToggleComplete.bind(this);
+        this.handleRemoveItem = this.handleRemoveItem.bind(this);
         this.handleAddItem = this.handleAddItem.bind(this);
         this.handleToggleAllComplete = this.handleToggleAllComplete.bind(this);
     }
@@ -24,6 +25,14 @@ class App extends Component {
                 ...item,
                 complete
             }
+        });
+        this.setState({
+            items: newItems
+        });
+    }
+    handleRemoveItem(key) {
+        const newItems = this.state.items.filter((item) => {
+            return item.key !== key;
         });
         this.setState({
             items: newItems
@@ -75,6 +84,7 @@ class App extends Component {
                                 <Row
                                     item={ item }
                                     onComplete={ (complete) => this.handleToggleComplete( item.key , complete ) }
+                                    onRemove={ () => this.handleRemoveItem( item.key ) }
                                 />
                             );
                         }}
